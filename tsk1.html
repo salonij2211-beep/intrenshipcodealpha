@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Advanced Image Gallery & Editor</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css"
+/>
+
+</head>
+
+<body>
+
+<header class="gallery-header">
+    <!-- ब्रांड बैज - जो प्रोजेक्ट को प्रोफेशनल लुक देता है -->
+    <div class="header-badge">Enterprise Asset System</div>
+    
+    <!-- मुख्य शीर्षक (Core Brand Name) -->
+    <h1 class="header-title">OmniMedia Engine</h1>
+    
+    <!-- फीचर्स की सूची (Feature Pipeline) -->
+    <p class="header-pipeline">
+        <span>100+ Index Assets</span> &bull; 
+        <span>Multi-Filters</span> &bull; 
+        <span>Smart Crop</span> &bull; 
+        <span>Precision Zoom</span> &bull; 
+        <span>Lossless Download</span>
+    </p>
+
+    <!-- आधुनिक सर्च कंटेनर -->
+    <div class="search-container">
+        <span class="search-icon">🔍</span>
+        <input
+            type="text"
+            id="searchBox"
+            placeholder="Query categories, metadata or asset tags..."
+            autocomplete="off"
+        >
+    </div>
+</header>
+
+
+<section class="filter-section">
+
+    <button onclick="filterImages('all')">
+        All
+    </button>
+
+    <button onclick="filterImages('nature')">
+        Nature
+    </button>
+
+    <button onclick="filterImages('city')">
+        City
+    </button>
+
+    <button onclick="filterImages('animals')">
+        Animals
+    </button>
+
+    <button onclick="filterImages('travel')">
+        Travel
+    </button>
+
+    <button onclick="filterImages('technology')">
+        Technology
+    </button>
+
+</section>
+
+<section id="gallery" class="gallery">
+</section>
+
+<!-- Lightbox -->
+
+<div id="lightbox">
+
+    <span class="close" onclick="closeLightbox()">
+        ×
+    </span>
+
+    <button class="prev" onclick="changeImage(-1)">
+        ❮
+    </button>
+
+    <img id="lightbox-img">
+
+    <button class="next" onclick="changeImage(1)">
+        ❯
+    </button>
+
+    <div id="counter">
+        1 / 100
+    </div>
+
+</div>
+
+<!-- Editor -->
+
+<section class="editor">
+
+    <h2>Image Editor</h2>
+
+    <div class="editor-container">
+
+        <img id="editorImage">
+
+    </div>
+
+    <div class="tools">
+
+        <button onclick="rotateLeft()">
+            Rotate Left
+        </button>
+
+        <button onclick="rotateRight()">
+            Rotate Right
+        </button>
+
+        <button onclick="zoomIn()">
+            Zoom In
+        </button>
+
+        <button onclick="zoomOut()">
+            Zoom Out
+        </button>
+
+        <button onclick="cropImage()">
+            Crop
+        </button>
+
+        <button onclick="resetImage()">
+            Reset
+        </button>
+
+        <button onclick="downloadImage()">
+            Download
+        </button>
+
+    </div>
+
+    <div class="filters">
+
+        <label>
+            Brightness
+        </label>
+
+        <input
+            type="range"
+            min="0"
+            max="200"
+            value="100"
+            id="brightness"
+        >
+
+        <label>
+            Contrast
+        </label>
+
+        <input
+            type="range"
+            min="0"
+            max="200"
+            value="100"
+            id="contrast"
+        >
+
+        <label>
+            Grayscale
+        </label>
+
+        <input
+            type="range"
+            min="0"
+            max="100"
+            value="0"
+            id="grayscale"
+        >
+
+    </div>
+
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js"></script>
+
+<script src="script.js"></script>
+
+</body>
+</html>

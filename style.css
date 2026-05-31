@@ -1,0 +1,367 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#0f172a;
+    color:white;
+    min-height:100vh;
+}
+
+/* HEADER */
+
+/* हेडर का मुख्य कंटेनर */
+.gallery-header {
+    background: linear-gradient(180deg, #0b0f19 0%, #111827 100%); /* Deep Slate Premium Dark Drop */
+    padding: 60px 20px;
+    text-align: center;
+    border-bottom: 1px solid #1f2937;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ऊपर का छोटा वर्जन टैग */
+.header-badge {
+    display: inline-block;
+    background: rgba(59, 130, 246, 0.1);
+    color: #3b82f6;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    margin-bottom: 16px;
+}
+
+/* मुख्य हैडिंग (Title) */
+.header-title {
+    color: #f9fafb;
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    margin-bottom: 12px;
+}
+
+/* फीचर्स वाली लाइन (Subtitle) */
+.header-pipeline {
+    color: #9ca3af;
+    font-size: 0.9rem;
+    font-weight: 450;
+    margin-bottom: 32px;
+    letter-spacing: 0.5px;
+}
+
+.header-pipeline span {
+    color: #e5e7eb; /* फीचर्स को थोड़ा हाइलाइट करने के लिए */
+}
+
+/* सर्च बॉक्स का आउटर बॉक्स */
+.search-container {
+    position: relative;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+/* सर्च आइकॉन */
+.search-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.95rem;
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+/* इनपुट फ़ील्ड (Search Input) */
+#searchBox {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px 16px 14px 44px;
+    background-color: #030712; /* Rich Dark Background */
+    border: 1px solid #374151;
+    border-radius: 8px;
+    color: #f3f4f6;
+    font-size: 0.95rem;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* इनपुट फोकस स्टेट (Focus State) */
+#searchBox:focus {
+    outline: none;
+    border-color: #3b82f6;
+    background-color: #0b0f19;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15), 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+}
+
+/* प्लेसहोल्डर का रंग */
+#searchBox::placeholder {
+    color: #6b7280;
+}
+
+
+#searchBox{
+    width:90%;
+    max-width:500px;
+    padding:14px;
+    border:none;
+    outline:none;
+    border-radius:10px;
+    font-size:16px;
+}
+
+/* FILTER BUTTONS */
+
+.filter-section{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:10px;
+    padding:25px;
+}
+
+.filter-section button{
+    padding:12px 20px;
+    border:none;
+    cursor:pointer;
+    border-radius:8px;
+    background:#2563eb;
+    color:white;
+    transition:.3s;
+}
+
+.filter-section button:hover{
+    transform:translateY(-3px);
+    background:#1d4ed8;
+}
+
+/* GALLERY */
+
+.gallery{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(260px,1fr));
+
+    gap:20px;
+    padding:30px;
+}
+
+.image-box{
+    overflow:hidden;
+    border-radius:15px;
+    position:relative;
+    box-shadow:
+    0 5px 15px rgba(0,0,0,.4);
+}
+
+.image-box img{
+    width:100%;
+    height:260px;
+    object-fit:cover;
+    cursor:pointer;
+    transition:.5s;
+}
+
+.image-box:hover img{
+    transform:scale(1.1);
+}
+
+.image-box::after{
+    content:'View Image';
+    position:absolute;
+    inset:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:rgba(0,0,0,.5);
+    opacity:0;
+    transition:.3s;
+    font-size:18px;
+    font-weight:bold;
+}
+
+.image-box:hover::after{
+    opacity:1;
+}
+
+/* LIGHTBOX */
+
+#lightbox{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.95);
+    z-index:999;
+    justify-content:center;
+    align-items:center;
+}
+
+#lightbox img{
+    max-width:80%;
+    max-height:80%;
+    border-radius:12px;
+    box-shadow:
+    0 0 20px rgba(255,255,255,.15);
+}
+
+.close{
+    position:absolute;
+    top:20px;
+    right:30px;
+    font-size:45px;
+    cursor:pointer;
+}
+
+.prev,
+.next{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    border:none;
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    cursor:pointer;
+    font-size:25px;
+    background:white;
+}
+
+.prev{
+    left:30px;
+}
+
+.next{
+    right:30px;
+}
+
+#counter{
+    position:absolute;
+    bottom:30px;
+    background:#1e293b;
+    padding:10px 20px;
+    border-radius:20px;
+}
+
+/* EDITOR */
+
+.editor{
+    width:95%;
+    max-width:1200px;
+    margin:50px auto;
+    background:#1e293b;
+    padding:30px;
+    border-radius:20px;
+}
+
+.editor h2{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.editor-container{
+    width:100%;
+    max-height:600px;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+#editorImage{
+    max-width:100%;
+    border-radius:12px;
+}
+
+/* TOOLS */
+
+.tools{
+    margin-top:25px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    justify-content:center;
+}
+
+.tools button{
+    padding:12px 18px;
+    border:none;
+    cursor:pointer;
+    border-radius:8px;
+    background:#2563eb;
+    color:white;
+    transition:.3s;
+}
+
+.tools button:hover{
+    background:#1d4ed8;
+    transform:translateY(-2px);
+}
+
+/* FILTER SLIDERS */
+
+.filters{
+    margin-top:30px;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.filters label{
+    font-weight:600;
+}
+
+.filters input{
+    width:100%;
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#2563eb;
+    border-radius:10px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+    header h1{
+        font-size:2rem;
+    }
+
+    .gallery{
+        grid-template-columns:1fr;
+    }
+
+    #lightbox img{
+        max-width:95%;
+    }
+
+    .prev,
+    .next{
+        width:45px;
+        height:45px;
+        font-size:18px;
+    }
+
+    .editor{
+        padding:15px;
+    }
+
+    .tools{
+        flex-direction:column;
+    }
+
+    .tools button{
+        width:100%;
+    }
+}
